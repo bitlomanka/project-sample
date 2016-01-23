@@ -1,0 +1,23 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "latest",
+    "grunt-concat-css": "latest",
+    "gulp": "latest",
+    "gulp-concat": "latest",
+    "gulp-concat-css": "latest",
+    "gulp-minify-css": "latest",
+    "gulp-rename": "latest",
+    "gulp-uglify": "latest",
+    "main-bower-files": "latest"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Victoria",
+  "license": "ISC"
+}
