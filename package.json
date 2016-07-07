@@ -5,15 +5,20 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "autoprefixer": "latest",
     "browser-sync": "latest",
-    "grunt-concat-css": "latest",
+    "cssnano": "latest",
     "gulp": "latest",
+    "gulp-compass": "latest",
     "gulp-concat": "latest",
     "gulp-concat-css": "latest",
-    "gulp-minify-css": "latest",
+    "gulp-if": "latest",
+    "gulp-jade": "latest",
+    "gulp-plumber": "latest",
+    "gulp-postcss": "latest",
     "gulp-rename": "latest",
     "gulp-uglify": "latest",
-    "main-bower-files": "latest"
+    "gulp-useref": "latest"
   },
   "scripts": {
     "test": "test"
