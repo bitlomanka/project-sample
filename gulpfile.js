@@ -6,37 +6,31 @@ var gulp = require("gulp"),
     postcss = require('gulp-postcss'),    
     autoprefixer = require('autoprefixer'),
     cssnano = require('cssnano'),
-    jade = require('gulp-jade'),
     plumber = require('gulp-plumber'),
-    compass = require('gulp-compass');
+    pug = require('gulp-pug'),
+    sass = require('gulp-sass');
 
-// jade
-gulp.task('jade', function() {
-  var YOUR_LOCALS = {};
+// pug
+gulp.task('pug', function() {
  
-  return gulp.src('app/source/jade/pages/*.jade')
-    .pipe(plumber())
-    .pipe(jade({
-      locals: YOUR_LOCALS,
-      pretty: '\t'
+  return gulp.src('app/source/pug/pages/*.pug')
+    .pipe(pug({
+        pretty: true
     }))
     .pipe(gulp.dest('app/source/'))
 });
 
-gulp.task('compass', function() {
-  return gulp.src('app/source/sass/**/*.scss')
-    .pipe(plumber())
-    .pipe(compass({
-      config_file: './config.rb',
-      css: 'app/source/css',
-      sass: 'app/source/sass',
-      image: 'app/source/images'
-    }))
+
+gulp.task('sass', function () {
+	return gulp.src('app/source/sass/**/*.scss')
+		.pipe(plumber())
+		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+		.pipe(gulp.dest('app/source/css'));
 });
 
 
 // css/js/html
-gulp.task('html', ['jade', 'compass'], function () {
+gulp.task('html', ['pug', 'sass'], function () {
     return gulp.src('app/source/*.html')
         .pipe(useref())
         .pipe(gulpif('*.js', uglify()))
@@ -82,8 +76,8 @@ gulp.task('server', function () {
 
 // слежка
 gulp.task('watch', function () {    
-  gulp.watch(['app/source/jade/**/*.jade'], ['jade', browserSync.reload]);
-  gulp.watch(['app/source/sass/**/*.scss'], ['compass', browserSync.reload]);
+  gulp.watch(['app/source/pug/**/*.pug'], ['pug', browserSync.reload]);
+  gulp.watch(['app/source/sass/**/*.scss'], ['sass', browserSync.reload]);
   gulp.watch(['app/source/js/**/*.js'], [browserSync.reload]);
 }); 
 
@@ -94,4 +88,4 @@ gulp.task('build', ['html', 'images', 'fonts'], function(){
 });
 
 // таск по умолчанию
-gulp.task('default', ['jade', 'compass', 'devServer', 'watch']);
+gulp.task('default', ['pug', 'sass', 'devServer', 'watch']);

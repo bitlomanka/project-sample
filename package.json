@@ -9,16 +9,16 @@
     "browser-sync": "latest",
     "cssnano": "latest",
     "gulp": "latest",
-    "gulp-compass": "latest",
     "gulp-concat": "latest",
     "gulp-concat-css": "latest",
     "gulp-if": "latest",
-    "gulp-jade": "latest",
     "gulp-plumber": "latest",
     "gulp-postcss": "latest",
     "gulp-rename": "latest",
     "gulp-uglify": "latest",
-    "gulp-useref": "latest"
+    "gulp-useref": "latest",
+    "gulp-pug": "^2.0.0-rc.4",
+    "gulp-sass": "latest"
   },
   "scripts": {
     "test": "test"
